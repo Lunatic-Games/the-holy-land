@@ -1,0 +1,214 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Tiles/HexTile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Tiles/wheat.png" type="Texture" id=2]
+[ext_resource path="res://Tiles/forest.png" type="Texture" id=3]
+[ext_resource path="res://Tiles/desert.png" type="Texture" id=4]
+[ext_resource path="res://Tiles/mountain.png" type="Texture" id=5]
+[ext_resource path="res://Tiles/WindmillTile.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Tiles/WaterTile.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Tiles/CampTile.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Tiles/FarmTile.tscn" type="PackedScene" id=9]
+
+[node name="Game" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 639, 360 )
+current = true
+limit_smoothed = true
+
+[node name="Hexes" type="Node2D" parent="."]
+
+[node name="HexTile" parent="Hexes" instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( 591, 365 )
+
+[node name="Sprite" parent="Hexes/HexTile" index="0"]
+texture = ExtResource( 2 )
+
+[node name="HexTile8" parent="Hexes" instance=ExtResource( 1 )]
+position = Vector2( 447, 437 )
+
+[node name="HexTile13" parent="Hexes" instance=ExtResource( 1 )]
+position = Vector2( 495, 221 )
+
+[node name="HexTile14" parent="Hexes" instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( 735, 293 )
+
+[node name="Sprite" parent="Hexes/HexTile14" index="0"]
+texture = ExtResource( 3 )
+
+[node name="HexTile23" parent="Hexes" instance=ExtResource( 1 )]
+position = Vector2( 879, 365 )
+
+[node name="HexTile34" parent="Hexes" instance=ExtResource( 1 )]
+position = Vector2( 831, 581 )
+
+[node name="HexTile38" parent="Hexes" instance=ExtResource( 1 )]
+position = Vector2( 831, 149 )
+
+[node name="HexTile35" parent="Hexes" instance=ExtResource( 1 )]
+position = Vector2( 879, 509 )
+
+[node name="HexTile37" parent="Hexes" instance=ExtResource( 1 )]
+position = Vector2( 879, 221 )
+
+[node name="HexTile39" parent="Hexes" instance=ExtResource( 1 )]
+position = Vector2( 927, 293 )
+
+[node name="HexTile40" parent="Hexes" instance=ExtResource( 1 )]
+position = Vector2( 927, 437 )
+
+[node name="HexTile41" parent="Hexes" instance=ExtResource( 1 )]
+position = Vector2( 975, 365 )
+
+[node name="HexTile15" parent="Hexes" instance=ExtResource( 1 )]
+position = Vector2( 399, 365 )
+
+[node name="HexTile17" parent="Hexes" instance=ExtResource( 1 )]
+position = Vector2( 735, 437 )
+
+[node name="HexTile20" parent="Hexes" instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( 783, 509 )
+
+[node name="Sprite" parent="Hexes/HexTile20" index="0"]
+texture = ExtResource( 4 )
+
+[node name="HexTile24" parent="Hexes" instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( 735, 581 )
+
+[node name="Sprite" parent="Hexes/HexTile24" index="0"]
+texture = ExtResource( 4 )
+
+[node name="HexTile28" parent="Hexes" instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( 735, 149 )
+
+[node name="Sprite" parent="Hexes/HexTile28" index="0"]
+texture = ExtResource( 5 )
+
+[node name="HexTile11" parent="Hexes" instance=ExtResource( 1 )]
+position = Vector2( 447, 293 )
+
+[node name="HexTile22" parent="Hexes" instance=ExtResource( 1 )]
+position = Vector2( 831, 437 )
+
+[node name="HexTile18" parent="Hexes" instance=ExtResource( 1 )]
+position = Vector2( 591, 509 )
+
+[node name="HexTile27" parent="Hexes" instance=ExtResource( 1 )]
+position = Vector2( 543, 581 )
+
+[node name="HexTile29" parent="Hexes" instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( 543, 149 )
+
+[node name="Sprite" parent="Hexes/HexTile29" index="0"]
+texture = ExtResource( 5 )
+
+[node name="HexTile25" parent="Hexes" instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( 783, 221 )
+
+[node name="Sprite" parent="Hexes/HexTile25" index="0"]
+texture = ExtResource( 3 )
+
+[node name="HexTile21" parent="Hexes" instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( 831, 293 )
+
+[node name="Sprite" parent="Hexes/HexTile21" index="0"]
+texture = ExtResource( 3 )
+
+[node name="HexTile9" parent="Hexes" instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( 543, 293 )
+
+[node name="Sprite" parent="Hexes/HexTile9" index="0"]
+texture = ExtResource( 2 )
+
+[node name="HexTile3" parent="Hexes" instance=ExtResource( 1 )]
+position = Vector2( 639, 437 )
+
+[node name="HexTile19" parent="Hexes" instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( 687, 509 )
+
+[node name="Sprite" parent="Hexes/HexTile19" index="0"]
+texture = ExtResource( 4 )
+
+[node name="HexTile26" parent="Hexes" instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( 639, 581 )
+
+[node name="Sprite" parent="Hexes/HexTile26" index="0"]
+texture = ExtResource( 4 )
+
+[node name="HexTile30" parent="Hexes" instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( 639, 149 )
+
+[node name="Sprite" parent="Hexes/HexTile30" index="0"]
+texture = ExtResource( 5 )
+
+[node name="HexTile12" parent="Hexes" instance=ExtResource( 1 )]
+position = Vector2( 495, 509 )
+
+[node name="HexTile7" parent="Hexes" instance=ExtResource( 1 )]
+editor/display_folded = true
+position = Vector2( 495, 365 )
+
+[node name="Sprite" parent="Hexes/HexTile7" index="0"]
+texture = ExtResource( 2 )
+
+[node name="HexTile16" parent="Hexes" instance=ExtResource( 6 )]
+editor/display_folded = true
+position = Vector2( 783, 365 )
+
+[node name="WaterTile" parent="Hexes" instance=ExtResource( 7 )]
+position = Vector2( 639, 292 )
+
+[node name="WaterTile2" parent="Hexes" instance=ExtResource( 7 )]
+position = Vector2( 591, 220 )
+
+[node name="WaterTile3" parent="Hexes" instance=ExtResource( 7 )]
+position = Vector2( 687, 220 )
+
+[node name="CampTile" parent="Hexes" instance=ExtResource( 8 )]
+position = Vector2( 687, 365 )
+
+[node name="FarmTile" parent="Hexes" instance=ExtResource( 9 )]
+position = Vector2( 543, 437 )
+
+[editable path="Hexes/HexTile"]
+
+[editable path="Hexes/HexTile14"]
+
+[editable path="Hexes/HexTile41"]
+
+[editable path="Hexes/HexTile20"]
+
+[editable path="Hexes/HexTile24"]
+
+[editable path="Hexes/HexTile28"]
+
+[editable path="Hexes/HexTile29"]
+
+[editable path="Hexes/HexTile25"]
+
+[editable path="Hexes/HexTile21"]
+
+[editable path="Hexes/HexTile9"]
+
+[editable path="Hexes/HexTile19"]
+
+[editable path="Hexes/HexTile26"]
+
+[editable path="Hexes/HexTile30"]
+
+[editable path="Hexes/HexTile7"]
+
+[editable path="Hexes/HexTile16"]

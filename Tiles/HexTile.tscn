@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Tiles/HexTile.gd" type="Script" id=1]
+[ext_resource path="res://Tiles/grass.png" type="Texture" id=2]
+[ext_resource path="res://Tiles/hovered.png" type="Texture" id=3]
+
+[node name="HexTile" type="Area2D"]
+position = Vector2( 506, 315 )
+scale = Vector2( 3, 3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2( 1.00363, 1.01233 )
+polygon = PoolVector2Array( -15.9422, -7.90253, 0, -15.8051, 15.9422, -7.90253, 15.9422, 7.90253, 0, 15.8051, -15.9422, 7.90253 )
+
+[node name="Hovered" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 3 )
+[connection signal="mouse_entered" from="." to="." method="_on_HexTile_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_HexTile_mouse_exited"]
