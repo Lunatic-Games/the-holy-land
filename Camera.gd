@@ -8,12 +8,18 @@ func _input(event):
 	if event is InputEventMouseButton and event.is_pressed():
 		if event.button_index == BUTTON_WHEEL_UP:
 			if zoom.x / zoom_modifier >= 0.1:
-				zoom.x /= zoom_modifier
-				zoom.y /= zoom_modifier
+				zoom(1 / zoom_modifier)
 		elif event.button_index == BUTTON_WHEEL_DOWN:
 			if zoom.x * zoom_modifier <= 4:
-				zoom.x *= zoom_modifier
-				zoom.y *= zoom_modifier
+				zoom(zoom_modifier)
+				
+
+func zoom(modifier):
+	var dist_from_center = get_viewport_rect().size / 2 - get_viewport().get_mouse_position()
+	var old_zoom = zoom.x
+	zoom.x *= modifier
+	zoom.y *= modifier
+	position += dist_from_center * (zoom.x - old_zoom)
 				
 func _process(delta):
 	var movement = Vector2()
