@@ -1,214 +1,225 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://Tiles/HexTile.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Tiles/wheat.png" type="Texture" id=2]
-[ext_resource path="res://Tiles/forest.png" type="Texture" id=3]
-[ext_resource path="res://Tiles/desert.png" type="Texture" id=4]
-[ext_resource path="res://Tiles/mountain.png" type="Texture" id=5]
-[ext_resource path="res://Tiles/WindmillTile.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Tiles/WaterTile.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Tiles/CampTile.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Tiles/FarmTile.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Camera.gd" type="Script" id=1]
+[ext_resource path="res://Tiles/Base/Base.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Tiles/Desert/Desert.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Tiles/Camp/Camp.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Tiles/Farm/Farm.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Tiles/Forest/Forest.tscn" type="PackedScene" id=6]
+[ext_resource path="res://UI/panel-export.png" type="Texture" id=7]
+[ext_resource path="res://UI/wood.png" type="Texture" id=8]
+[ext_resource path="res://UI/upheavtt.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://UI/iron.png" type="Texture" id=10]
+[ext_resource path="res://UI/food.png" type="Texture" id=11]
+[ext_resource path="res://UI/people.png" type="Texture" id=12]
+[ext_resource path="res://UI/faith.png" type="Texture" id=13]
+[ext_resource path="res://UI/wheel-export.png" type="Texture" id=14]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 9 )
 
 [node name="Game" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera" type="Camera2D" parent="."]
 position = Vector2( 639, 360 )
 current = true
 limit_smoothed = true
+script = ExtResource( 1 )
 
 [node name="Hexes" type="Node2D" parent="."]
 
-[node name="HexTile" parent="Hexes" instance=ExtResource( 1 )]
+[node name="Base" parent="Hexes" instance=ExtResource( 2 )]
+
+[node name="Desert" parent="Hexes" instance=ExtResource( 3 )]
+position = Vector2( 784, 320 )
+
+[node name="Desert2" parent="Hexes" instance=ExtResource( 3 )]
+position = Vector2( 720, 418 )
+
+[node name="Camp" parent="Hexes" instance=ExtResource( 4 )]
+position = Vector2( 592, 418 )
+
+[node name="Farm" parent="Hexes" instance=ExtResource( 5 )]
+position = Vector2( 528, 320 )
+
+[node name="Forest" parent="Hexes" instance=ExtResource( 6 )]
+position = Vector2( 592, 222 )
+
+[node name="Forest2" parent="Hexes" instance=ExtResource( 6 )]
+position = Vector2( 720, 222 )
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="NinePatchRect" parent="HUD"]
 editor/display_folded = true
-position = Vector2( 591, 365 )
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -352.0
+margin_top = -101.0
+margin_right = 352.0
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 64, 64 )
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
 
-[node name="Sprite" parent="Hexes/HexTile" index="0"]
-texture = ExtResource( 2 )
+[node name="MarginContainer" type="MarginContainer" parent="HUD/PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 10
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 30
 
-[node name="HexTile8" parent="Hexes" instance=ExtResource( 1 )]
-position = Vector2( 447, 437 )
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/PanelContainer/MarginContainer"]
+margin_left = 20.0
+margin_top = 10.0
+margin_right = 684.0
+margin_bottom = 74.0
+custom_constants/separation = 20
 
-[node name="HexTile13" parent="Hexes" instance=ExtResource( 1 )]
-position = Vector2( 495, 221 )
-
-[node name="HexTile14" parent="Hexes" instance=ExtResource( 1 )]
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/PanelContainer/MarginContainer/HBoxContainer"]
 editor/display_folded = true
-position = Vector2( 735, 293 )
+margin_right = 114.0
+margin_bottom = 64.0
 
-[node name="Sprite" parent="Hexes/HexTile14" index="0"]
-texture = ExtResource( 3 )
+[node name="TextureRect" type="TextureRect" parent="HUD/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer"]
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+texture = ExtResource( 8 )
+stretch_mode = 1
 
-[node name="HexTile23" parent="Hexes" instance=ExtResource( 1 )]
-position = Vector2( 879, 365 )
+[node name="MarginContainer" type="MarginContainer" parent="HUD/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer"]
+margin_left = 68.0
+margin_right = 114.0
+margin_bottom = 64.0
+custom_constants/margin_top = 20
 
-[node name="HexTile34" parent="Hexes" instance=ExtResource( 1 )]
-position = Vector2( 831, 581 )
+[node name="Label" type="Label" parent="HUD/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer"]
+margin_top = 27.0
+margin_right = 46.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 1 )
+text = "100"
 
-[node name="HexTile38" parent="Hexes" instance=ExtResource( 1 )]
-position = Vector2( 831, 149 )
-
-[node name="HexTile35" parent="Hexes" instance=ExtResource( 1 )]
-position = Vector2( 879, 509 )
-
-[node name="HexTile37" parent="Hexes" instance=ExtResource( 1 )]
-position = Vector2( 879, 221 )
-
-[node name="HexTile39" parent="Hexes" instance=ExtResource( 1 )]
-position = Vector2( 927, 293 )
-
-[node name="HexTile40" parent="Hexes" instance=ExtResource( 1 )]
-position = Vector2( 927, 437 )
-
-[node name="HexTile41" parent="Hexes" instance=ExtResource( 1 )]
-position = Vector2( 975, 365 )
-
-[node name="HexTile15" parent="Hexes" instance=ExtResource( 1 )]
-position = Vector2( 399, 365 )
-
-[node name="HexTile17" parent="Hexes" instance=ExtResource( 1 )]
-position = Vector2( 735, 437 )
-
-[node name="HexTile20" parent="Hexes" instance=ExtResource( 1 )]
+[node name="HBoxContainer2" type="HBoxContainer" parent="HUD/PanelContainer/MarginContainer/HBoxContainer"]
 editor/display_folded = true
-position = Vector2( 783, 509 )
+margin_left = 134.0
+margin_right = 248.0
+margin_bottom = 64.0
 
-[node name="Sprite" parent="Hexes/HexTile20" index="0"]
-texture = ExtResource( 4 )
+[node name="TextureRect" type="TextureRect" parent="HUD/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer2"]
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+texture = ExtResource( 10 )
+stretch_mode = 1
 
-[node name="HexTile24" parent="Hexes" instance=ExtResource( 1 )]
+[node name="MarginContainer" type="MarginContainer" parent="HUD/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer2"]
+margin_left = 68.0
+margin_right = 114.0
+margin_bottom = 64.0
+custom_constants/margin_top = 20
+
+[node name="Label" type="Label" parent="HUD/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer2/MarginContainer"]
+margin_top = 27.0
+margin_right = 46.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 1 )
+text = "100"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="HUD/PanelContainer/MarginContainer/HBoxContainer"]
 editor/display_folded = true
-position = Vector2( 735, 581 )
+margin_left = 268.0
+margin_right = 382.0
+margin_bottom = 64.0
 
-[node name="Sprite" parent="Hexes/HexTile24" index="0"]
-texture = ExtResource( 4 )
+[node name="TextureRect" type="TextureRect" parent="HUD/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer3"]
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+texture = ExtResource( 11 )
+stretch_mode = 1
 
-[node name="HexTile28" parent="Hexes" instance=ExtResource( 1 )]
+[node name="MarginContainer" type="MarginContainer" parent="HUD/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer3"]
+margin_left = 68.0
+margin_right = 114.0
+margin_bottom = 64.0
+custom_constants/margin_top = 20
+
+[node name="Label" type="Label" parent="HUD/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer3/MarginContainer"]
+margin_top = 27.0
+margin_right = 46.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 1 )
+text = "100"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="HUD/PanelContainer/MarginContainer/HBoxContainer"]
 editor/display_folded = true
-position = Vector2( 735, 149 )
+margin_left = 402.0
+margin_right = 516.0
+margin_bottom = 64.0
 
-[node name="Sprite" parent="Hexes/HexTile28" index="0"]
-texture = ExtResource( 5 )
+[node name="TextureRect" type="TextureRect" parent="HUD/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer4"]
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+texture = ExtResource( 12 )
+stretch_mode = 1
 
-[node name="HexTile11" parent="Hexes" instance=ExtResource( 1 )]
-position = Vector2( 447, 293 )
+[node name="MarginContainer" type="MarginContainer" parent="HUD/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer4"]
+margin_left = 68.0
+margin_right = 114.0
+margin_bottom = 64.0
+custom_constants/margin_top = 20
 
-[node name="HexTile22" parent="Hexes" instance=ExtResource( 1 )]
-position = Vector2( 831, 437 )
+[node name="Label" type="Label" parent="HUD/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer4/MarginContainer"]
+margin_top = 27.0
+margin_right = 46.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 1 )
+text = "100"
 
-[node name="HexTile18" parent="Hexes" instance=ExtResource( 1 )]
-position = Vector2( 591, 509 )
-
-[node name="HexTile27" parent="Hexes" instance=ExtResource( 1 )]
-position = Vector2( 543, 581 )
-
-[node name="HexTile29" parent="Hexes" instance=ExtResource( 1 )]
+[node name="HBoxContainer5" type="HBoxContainer" parent="HUD/PanelContainer/MarginContainer/HBoxContainer"]
 editor/display_folded = true
-position = Vector2( 543, 149 )
+margin_left = 536.0
+margin_right = 650.0
+margin_bottom = 64.0
 
-[node name="Sprite" parent="Hexes/HexTile29" index="0"]
-texture = ExtResource( 5 )
+[node name="TextureRect" type="TextureRect" parent="HUD/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer5"]
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+texture = ExtResource( 13 )
+stretch_mode = 1
 
-[node name="HexTile25" parent="Hexes" instance=ExtResource( 1 )]
-editor/display_folded = true
-position = Vector2( 783, 221 )
+[node name="MarginContainer" type="MarginContainer" parent="HUD/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer5"]
+margin_left = 68.0
+margin_right = 114.0
+margin_bottom = 64.0
+custom_constants/margin_top = 20
 
-[node name="Sprite" parent="Hexes/HexTile25" index="0"]
-texture = ExtResource( 3 )
+[node name="Label" type="Label" parent="HUD/PanelContainer/MarginContainer/HBoxContainer/HBoxContainer5/MarginContainer"]
+margin_top = 27.0
+margin_right = 46.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 1 )
+text = "100"
 
-[node name="HexTile21" parent="Hexes" instance=ExtResource( 1 )]
-editor/display_folded = true
-position = Vector2( 831, 293 )
-
-[node name="Sprite" parent="Hexes/HexTile21" index="0"]
-texture = ExtResource( 3 )
-
-[node name="HexTile9" parent="Hexes" instance=ExtResource( 1 )]
-editor/display_folded = true
-position = Vector2( 543, 293 )
-
-[node name="Sprite" parent="Hexes/HexTile9" index="0"]
-texture = ExtResource( 2 )
-
-[node name="HexTile3" parent="Hexes" instance=ExtResource( 1 )]
-position = Vector2( 639, 437 )
-
-[node name="HexTile19" parent="Hexes" instance=ExtResource( 1 )]
-editor/display_folded = true
-position = Vector2( 687, 509 )
-
-[node name="Sprite" parent="Hexes/HexTile19" index="0"]
-texture = ExtResource( 4 )
-
-[node name="HexTile26" parent="Hexes" instance=ExtResource( 1 )]
-editor/display_folded = true
-position = Vector2( 639, 581 )
-
-[node name="Sprite" parent="Hexes/HexTile26" index="0"]
-texture = ExtResource( 4 )
-
-[node name="HexTile30" parent="Hexes" instance=ExtResource( 1 )]
-editor/display_folded = true
-position = Vector2( 639, 149 )
-
-[node name="Sprite" parent="Hexes/HexTile30" index="0"]
-texture = ExtResource( 5 )
-
-[node name="HexTile12" parent="Hexes" instance=ExtResource( 1 )]
-position = Vector2( 495, 509 )
-
-[node name="HexTile7" parent="Hexes" instance=ExtResource( 1 )]
-editor/display_folded = true
-position = Vector2( 495, 365 )
-
-[node name="Sprite" parent="Hexes/HexTile7" index="0"]
-texture = ExtResource( 2 )
-
-[node name="HexTile16" parent="Hexes" instance=ExtResource( 6 )]
-editor/display_folded = true
-position = Vector2( 783, 365 )
-
-[node name="WaterTile" parent="Hexes" instance=ExtResource( 7 )]
-position = Vector2( 639, 292 )
-
-[node name="WaterTile2" parent="Hexes" instance=ExtResource( 7 )]
-position = Vector2( 591, 220 )
-
-[node name="WaterTile3" parent="Hexes" instance=ExtResource( 7 )]
-position = Vector2( 687, 220 )
-
-[node name="CampTile" parent="Hexes" instance=ExtResource( 8 )]
-position = Vector2( 687, 365 )
-
-[node name="FarmTile" parent="Hexes" instance=ExtResource( 9 )]
-position = Vector2( 543, 437 )
-
-[editable path="Hexes/HexTile"]
-
-[editable path="Hexes/HexTile14"]
-
-[editable path="Hexes/HexTile41"]
-
-[editable path="Hexes/HexTile20"]
-
-[editable path="Hexes/HexTile24"]
-
-[editable path="Hexes/HexTile28"]
-
-[editable path="Hexes/HexTile29"]
-
-[editable path="Hexes/HexTile25"]
-
-[editable path="Hexes/HexTile21"]
-
-[editable path="Hexes/HexTile9"]
-
-[editable path="Hexes/HexTile19"]
-
-[editable path="Hexes/HexTile26"]
-
-[editable path="Hexes/HexTile30"]
-
-[editable path="Hexes/HexTile7"]
-
-[editable path="Hexes/HexTile16"]
+[node name="TextureRect" type="TextureRect" parent="HUD"]
+visible = false
+modulate = Color( 1, 1, 1, 0.905882 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -160.0
+margin_top = -160.0
+margin_right = 160.0
+margin_bottom = 160.0
+texture = ExtResource( 14 )
