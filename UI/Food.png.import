@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/faith.png-2ce0082159db1926ed2beddcd964c2bc.stex"
+path="res://.import/Food.png-0af80ce7b2fc291661c2dc8046318649.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/faith.png"
-dest_files=[ "res://.import/faith.png-2ce0082159db1926ed2beddcd964c2bc.stex" ]
+source_file="res://UI/Food.png"
+dest_files=[ "res://.import/Food.png-0af80ce7b2fc291661c2dc8046318649.stex" ]
 
 [params]
 
