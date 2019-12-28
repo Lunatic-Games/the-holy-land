@@ -1,17 +1,14 @@
 extends Area2D
 
-signal menu_opened
-signal menu_closed
-
 export(Array, String, FILE) var buildable
 export(Array, Resource) var images
  
 func _ready():
 	for image in images:
-		var text_rect = TextureRect.new()
-		text_rect.rect_scale = Vector2(0.5, 0.5)
-		text_rect.texture = image
-		$PanelContainer/Sections/Buildings.add_child(text_rect)
+		var button = load("res://Tiles/Base/BuildingButton.tscn").instance()
+		button.init(image, null)
+		button.connect("button_up", self, "building")
+		$PanelContainer/Sections/Buildings.add_child(button)
 		
 func _on_mouse_entered():
 	$HoveredSprite.visible = true
@@ -24,9 +21,20 @@ func _on_input_event(viewport, event, shape_idx):
 		open_menu()
 		
 func close_menu():
-	emit_signal("menu_closed", self)
 	$PanelContainer.visible = false
 	
 func open_menu():
-	emit_signal("menu_opened", self)
 	$PanelContainer.visible = true
+	
+func building():
+	$BuildingSprite.visible = true
+	$Sprite.modulate = Color8(200, 200, 200, 255)
+	close_menu()
+	
+func finish_building():
+	$BuildingSprite.visible = false
+	$Sprite.modulate = Color8(255, 255, 255, 255)
+	
+func _unhandled_input(event):
+	if event is InputEventMouseButton and not $HoveredSprite.visible:
+		close_menu()
