@@ -1,19 +1,18 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Tiles/Base/Base.gd" type="Script" id=1]
-[ext_resource path="res://Tiles/Windmill/Windmill1.png" type="Texture" id=2]
-[ext_resource path="res://Tiles/Base/Base.png" type="Texture" id=3]
-[ext_resource path="res://Tiles/Base/Building1.png" type="Texture" id=4]
-[ext_resource path="res://Tiles/Base/Hovered.png" type="Texture" id=5]
-[ext_resource path="res://UI/Panel.png" type="Texture" id=6]
-[ext_resource path="res://UI/LeftArrow.png" type="Texture" id=7]
-[ext_resource path="res://UI/LeftArrowHovered.png" type="Texture" id=8]
-[ext_resource path="res://UI/RightArrow.png" type="Texture" id=9]
-[ext_resource path="res://UI/RightArrowHovered.png" type="Texture" id=10]
-[ext_resource path="res://Tiles/Base/Building2.png" type="Texture" id=11]
+[ext_resource path="res://Tiles/Base/Base.png" type="Texture" id=2]
+[ext_resource path="res://Tiles/Base/Building1.png" type="Texture" id=3]
+[ext_resource path="res://Tiles/Base/Hovered.png" type="Texture" id=4]
+[ext_resource path="res://UI/Panel.png" type="Texture" id=5]
+[ext_resource path="res://UI/LeftArrow.png" type="Texture" id=6]
+[ext_resource path="res://UI/LeftArrowHovered.png" type="Texture" id=7]
+[ext_resource path="res://UI/RightArrow.png" type="Texture" id=8]
+[ext_resource path="res://UI/RightArrowHovered.png" type="Texture" id=9]
+[ext_resource path="res://Tiles/Base/Building2.png" type="Texture" id=10]
 
 [sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 64, 64 )
 margin_left = 4.0
 margin_right = 4.0
@@ -33,7 +32,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 4 ), ExtResource( 11 ) ]
+"values": [ ExtResource( 3 ), ExtResource( 10 ) ]
 }
 
 [node name="Base" type="Area2D"]
@@ -42,22 +41,20 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
-buildable = [ "res://Tiles/Windmill/Windmill.tscn" ]
-images = [ ExtResource( 2 ) ]
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 3 )
+texture = ExtResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( 0, -66, 64, -34, 64, 34, 0, 66, -64, 34, -64, -34 )
 
 [node name="BuildingSprite" type="Sprite" parent="."]
 visible = false
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 
 [node name="HoveredSprite" type="Sprite" parent="."]
 visible = false
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 visible = false
@@ -84,9 +81,9 @@ margin_bottom = 128.0
 margin_top = 48.0
 margin_right = 32.0
 margin_bottom = 80.0
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 7 )
-texture_hover = ExtResource( 8 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 7 )
 stretch_mode = 2
 
 [node name="Buildings" type="HBoxContainer" parent="PanelContainer/Sections"]
@@ -105,14 +102,18 @@ margin_bottom = 128.0
 margin_top = 48.0
 margin_right = 32.0
 margin_bottom = 80.0
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 9 )
-texture_hover = ExtResource( 10 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 9 )
 stretch_mode = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="BuildingAnimation" type="AnimationPlayer" parent="."]
 autoplay = "Building"
 anims/Building = SubResource( 2 )
+
+[node name="BuildTimer" type="Timer" parent="."]
+one_shot = true
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="timeout" from="BuildTimer" to="." method="finish_building"]

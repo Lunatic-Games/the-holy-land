@@ -4,6 +4,7 @@
 [ext_resource path="res://Tiles/Wheat/Wheat.png" type="Texture" id=2]
 
 [node name="Wheat" instance=ExtResource( 1 )]
+build_time = 2
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )

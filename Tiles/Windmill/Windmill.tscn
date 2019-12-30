@@ -7,7 +7,6 @@
 [sub_resource type="Animation" id=1]
 resource_name = "Passive"
 loop = true
-step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
@@ -22,10 +21,11 @@ tracks/0/keys = {
 }
 
 [node name="Windmill" instance=ExtResource( 1 )]
+build_time = 3
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+[node name="PassiveAnimation" type="AnimationPlayer" parent="." index="7"]
 autoplay = "Passive"
 anims/Passive = SubResource( 1 )

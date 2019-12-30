@@ -1,16 +1,23 @@
 extends TextureButton
 
-var building_scene
-
 func _ready():
-	modulate = Color8(230, 230, 230, 255)
-	
-func init(image, scene):
-	texture_normal = image
-	scene = building_scene
+	darken()
+
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.pressed:
+			darken()
+		else:
+			highlight()
 
 func _on_mouse_entered():
-	modulate = Color8(255, 255, 255, 255)
+	highlight()
 
 func _on_mouse_exited():
+	darken()
+	
+func highlight():
+	modulate = Color8(255, 255, 255, 255)
+	
+func darken():
 	modulate = Color8(230, 230, 230, 255)
