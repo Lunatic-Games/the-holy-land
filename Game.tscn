@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Camera.gd" type="Script" id=1]
 [ext_resource path="res://Tiles/Windmill/Windmill.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://UI/Food.png" type="Texture" id=14]
 [ext_resource path="res://UI/Population.png" type="Texture" id=15]
 [ext_resource path="res://UI/Nature.png" type="Texture" id=16]
+[ext_resource path="res://Units/Solider.png" type="Texture" id=17]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -237,3 +238,11 @@ margin_right = 46.0
 margin_bottom = 56.0
 custom_fonts/font = SubResource( 1 )
 text = "100"
+
+[node name="Solider" type="Sprite" parent="."]
+position = Vector2( 895, 358 )
+texture = ExtResource( 17 )
+
+[node name="Solider2" type="Sprite" parent="."]
+position = Vector2( 701, 459 )
+texture = ExtResource( 17 )
